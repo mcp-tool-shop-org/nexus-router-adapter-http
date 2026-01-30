@@ -1,3 +1,8 @@
+> ⚠️ **This repository has moved to [nexus-suite](https://github.com/mcp-tool-shop/nexus-suite)**
+> Source now lives at: `src/nexus-router-adapter-http/`
+
+---
+
 # nexus-router-adapter-http
 
 HTTP adapter for [nexus-router](https://github.com/mcp-tool-shop/nexus-router) - reference implementation of the adapter package contract.
