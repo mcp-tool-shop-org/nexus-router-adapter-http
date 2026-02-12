@@ -1,6 +1,6 @@
 [project]
 name = "nexus-router-adapter-http"
-version = "0.1.0"
+version = "0.1.1"
 description = "HTTP adapter for nexus-router - reference implementation"
 readme = "README.md"
 license = "MIT"
@@ -31,8 +31,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/mcp-tool-shop/nexus-router-adapter-http"
-Repository = "https://github.com/mcp-tool-shop/nexus-router-adapter-http"
+Homepage = "https://github.com/mcp-tool-shop-org/nexus-router-adapter-http"
+Repository = "https://github.com/mcp-tool-shop-org/nexus-router-adapter-http"
 
 [build-system]
 requires = ["hatchling"]
