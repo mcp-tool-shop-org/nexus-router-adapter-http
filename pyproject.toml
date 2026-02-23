@@ -1,6 +1,6 @@
 [project]
 name = "nexus-router-adapter-http"
-version = "0.1.1"
+version = "0.2.0"
 description = "HTTP adapter for nexus-router - reference implementation"
 readme = "README.md"
 license = "MIT"
@@ -17,6 +17,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 
 dependencies = [
@@ -45,7 +46,14 @@ packages = ["src/nexus_router_adapter_http"]
 testpaths = ["tests"]
 python_files = "test_*.py"
 
-[tool.pyright]
-include = ["src"]
-pythonVersion = "3.10"
-typeCheckingMode = "strict"
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

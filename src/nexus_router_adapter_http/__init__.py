@@ -7,25 +7,26 @@ Reference implementation of the adapter package contract.
 from __future__ import annotations
 
 import json
-from typing import Any, Dict, FrozenSet
+from typing import Any
 
 import httpx
-
 from nexus_router.dispatch import CAPABILITY_APPLY, CAPABILITY_EXTERNAL, CAPABILITY_TIMEOUT
 from nexus_router.exceptions import NexusOperationalError
 
 __all__ = [
+    "ADAPTER_KIND",
+    "ADAPTER_MANIFEST",
+    "DEFAULT_CAPABILITIES",
     "HttpAdapter",
     "create_adapter",
-    "ADAPTER_KIND",
-    "DEFAULT_CAPABILITIES",
-    "ADAPTER_MANIFEST",
 ]
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 # Module-level metadata (optional, per ADAPTER_SPEC.md)
 ADAPTER_KIND = "http"
-DEFAULT_CAPABILITIES: FrozenSet[str] = frozenset({CAPABILITY_APPLY, CAPABILITY_TIMEOUT, CAPABILITY_EXTERNAL})
+DEFAULT_CAPABILITIES: frozenset[str] = frozenset(
+    {CAPABILITY_APPLY, CAPABILITY_TIMEOUT, CAPABILITY_EXTERNAL}
+)
 
 # Adapter manifest (v0.10+)
 ADAPTER_MANIFEST = {
@@ -73,8 +74,8 @@ class HttpAdapter:
         base_url: str,
         adapter_id: str | None = None,
         timeout_s: float = 30.0,
-        headers: Dict[str, str] | None = None,
-        capabilities: FrozenSet[str] | None = None,
+        headers: dict[str, str] | None = None,
+        capabilities: frozenset[str] | None = None,
     ) -> None:
         """
         Create an HTTP adapter.
@@ -103,11 +104,11 @@ class HttpAdapter:
         return ADAPTER_KIND
 
     @property
-    def capabilities(self) -> FrozenSet[str]:
+    def capabilities(self) -> frozenset[str]:
         """Declared capabilities."""
         return self._capabilities
 
-    def call(self, tool: str, method: str, args: Dict[str, Any]) -> Dict[str, Any]:
+    def call(self, tool: str, method: str, args: dict[str, Any]) -> dict[str, Any]:
         """
         Execute a tool call via HTTP POST.
 
@@ -209,8 +210,8 @@ def create_adapter(
     base_url: str,
     adapter_id: str | None = None,
     timeout_s: float = 30.0,
-    headers: Dict[str, str] | None = None,
-    capabilities: FrozenSet[str] | None = None,
+    headers: dict[str, str] | None = None,
+    capabilities: frozenset[str] | None = None,
 ) -> HttpAdapter:
     """
     Create an HTTP adapter instance.

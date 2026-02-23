@@ -1,11 +1,10 @@
-> ⚠️ **This repository has moved to [nexus-suite](https://github.com/mcp-tool-shop/nexus-suite)**
-> Source now lives at: `src/nexus-router-adapter-http/`
-
----
-
 # nexus-router-adapter-http
 
-HTTP adapter for [nexus-router](https://github.com/mcp-tool-shop/nexus-router) - reference implementation of the adapter package contract.
+[![CI](https://github.com/mcp-tool-shop-org/nexus-router-adapter-http/actions/workflows/ci.yml/badge.svg)](https://github.com/mcp-tool-shop-org/nexus-router-adapter-http/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/nexus-router-adapter-http)](https://pypi.org/project/nexus-router-adapter-http/)
+[![License: MIT](https://img.shields.io/github/license/mcp-tool-shop-org/nexus-router-adapter-http)](LICENSE)
+
+HTTP/REST dispatch adapter for [nexus-router](https://github.com/mcp-tool-shop-org/nexus-router) — reference implementation of the adapter package contract.
 
 ## Installation
 
@@ -15,41 +14,16 @@ pip install nexus-router-adapter-http
 
 ## Usage
 
-### With Plugin Loader (Recommended)
-
 ```python
 from nexus_router.plugins import load_adapter
-from nexus_router.dispatch import AdapterRegistry
-from nexus_router.router import Router
-from nexus_router.event_store import EventStore
 
-# Load adapter from package
 adapter = load_adapter(
     "nexus_router_adapter_http:create_adapter",
     base_url="https://api.example.com/tools",
-    adapter_id="my-http-adapter",
     timeout_s=30,
 )
 
-# Register and use
-registry = AdapterRegistry(default_adapter_id="my-http-adapter")
-registry.register(adapter)
-
-store = EventStore(":memory:")
-router = Router(store, adapters=registry)
-```
-
-### Direct Import
-
-```python
-from nexus_router_adapter_http import create_adapter
-
-adapter = create_adapter(
-    base_url="https://api.example.com/tools",
-    adapter_id="my-http",
-    timeout_s=60,
-    headers={"Authorization": "Bearer token"},
-)
+result = adapter.call("my-tool", "my-method", {"arg": "value"})
 ```
 
 ## Configuration
@@ -60,11 +34,9 @@ adapter = create_adapter(
 | `adapter_id` | `str` | `http:{host}` | Stable identifier for this adapter |
 | `timeout_s` | `float` | `30.0` | Request timeout in seconds |
 | `headers` | `dict` | `{}` | Additional headers to include |
-| `capabilities` | `frozenset` | `{apply, external}` | Override capabilities |
+| `capabilities` | `frozenset` | `{apply, external, timeout}` | Override capabilities |
 
-## HTTP Protocol
-
-The adapter sends tool calls as HTTP POST requests:
+## HTTP protocol
 
 ```
 POST {base_url}/{tool}/{method}
@@ -74,10 +46,9 @@ Accept: application/json
 {args}
 ```
 
-Expected response:
-- Status 2xx with JSON object body
+Expected response: status 2xx with JSON object body.
 
-## Error Codes
+## Error codes
 
 | Code | Meaning |
 |------|---------|
@@ -88,21 +59,23 @@ Expected response:
 
 ## Capabilities
 
-Default capabilities:
-- `apply` - Can execute operations
-- `timeout` - Enforces request timeouts (via httpx)
-- `external` - Makes network calls
+- `apply` — Can execute operations
+- `timeout` — Enforces request timeouts (via httpx)
+- `external` — Makes network calls
 
 ## Development
 
 ```bash
-# Install dev dependencies
 pip install -e ".[dev]"
-
-# Run tests
-pytest
+pytest -v
+ruff check .
+mypy src/ --ignore-missing-imports
 ```
 
 ## License
 
 MIT
+
+---
+
+Built by [MCP Tool Shop](https://mcp-tool-shop.github.io/)

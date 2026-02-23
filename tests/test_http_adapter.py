@@ -3,14 +3,12 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Dict
 
 import httpx
 import pytest
-from pytest_httpx import HTTPXMock
-
 from nexus_router.dispatch import CAPABILITY_APPLY, CAPABILITY_EXTERNAL, CAPABILITY_TIMEOUT
 from nexus_router.exceptions import NexusOperationalError
+from pytest_httpx import HTTPXMock
 
 from nexus_router_adapter_http import (
     ADAPTER_KIND,
