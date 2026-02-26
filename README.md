@@ -3,9 +3,7 @@
 </p>
 
 <p align="center">
-  
-            <img src="https://raw.githubusercontent.com/mcp-tool-shop-org/brand/main/logos/nexus-router-adapter-http/readme.png"
-           alt="nexus-router-adapter-http" width="400">
+  <img src="https://raw.githubusercontent.com/mcp-tool-shop-org/nexus-router-adapter-http/main/assets/logo-nexus-router-adapter-http.png" alt="nexus-router-adapter-http" width="400">
 </p>
 
 <p align="center">
