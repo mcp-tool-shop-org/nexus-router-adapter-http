@@ -1,6 +1,6 @@
 [project]
 name = "nexus-router-adapter-http"
-version = "0.2.0"
+version = "0.2.1"
 description = "HTTP adapter for nexus-router - reference implementation"
 readme = "README.md"
 license = "MIT"
