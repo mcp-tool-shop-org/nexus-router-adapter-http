@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
+  <a href="README.ja.md">日本語</a> | <a href="README.md">English</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
 </p>
 
 <p align="center">
@@ -13,11 +13,11 @@
   <a href="https://mcp-tool-shop-org.github.io/nexus-router-adapter-http/"><img src="https://img.shields.io/badge/Landing_Page-live-blue" alt="Landing Page"></a>
 </p>
 
-**HTTP/REST dispatch adapter for [nexus-router](https://github.com/mcp-tool-shop-org/nexus-router)** — reference implementation of the adapter package contract.
+**HTTP/REST 适配器，适用于 [nexus-router](https://github.com/mcp-tool-shop-org/nexus-router)** — 适配器包的参考实现。
 
 ---
 
-## Installation
+## 安装
 
 ```bash
 pip install nexus-router-adapter-http
@@ -25,7 +25,7 @@ pip install nexus-router-adapter-http
 
 ---
 
-## Usage
+## 使用方法
 
 ```python
 from nexus_router.plugins import load_adapter
@@ -41,19 +41,19 @@ result = adapter.call("my-tool", "my-method", {"arg": "value"})
 
 ---
 
-## Configuration
+## 配置
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `base_url` | `str` | *required* | Base URL for the HTTP endpoint |
-| `adapter_id` | `str` | `http:{host}` | Stable identifier for this adapter |
-| `timeout_s` | `float` | `30.0` | Request timeout in seconds |
-| `headers` | `dict` | `{}` | Additional headers to include |
-| `capabilities` | `frozenset` | `{apply, external, timeout}` | Override capabilities |
+| 参数 | 类型 | 默认值 | 描述 |
+| ----------- | ------ | --------- | ------------- |
+| `base_url` | `str` | *必需* | HTTP 接口的基准 URL |
+| `adapter_id` | `str` | `http:{host}` | 此适配器的稳定标识符 |
+| `timeout_s` | `float` | `30.0` | 请求超时时间（秒） |
+| `headers` | `dict` | `{}` | 要包含的附加头部 |
+| `capabilities` | `frozenset` | `{apply, external, timeout}` | 覆盖功能 |
 
 ---
 
-## HTTP Protocol
+## HTTP 协议
 
 ```
 POST {base_url}/{tool}/{method}
@@ -63,30 +63,30 @@ Accept: application/json
 {args}
 ```
 
-Expected response: status 2xx with JSON object body.
+预期响应：状态码为 2xx，且包含 JSON 对象。
 
 ---
 
-## Error Codes
+## 错误代码
 
-| Code | Meaning |
-|------|---------|
-| `TIMEOUT` | Request timed out |
-| `CONNECTION_FAILED` | Could not connect to server |
-| `HTTP_ERROR` | HTTP 4xx/5xx response |
-| `INVALID_JSON` | Response was not valid JSON or not an object |
-
----
-
-## Capabilities
-
-- `apply` — Can execute operations
-- `timeout` — Enforces request timeouts (via httpx)
-- `external` — Makes network calls
+| 代码 | 含义 |
+| ------ | --------- |
+| `TIMEOUT` | 请求超时 |
+| `CONNECTION_FAILED` | 无法连接到服务器 |
+| `HTTP_ERROR` | HTTP 4xx/5xx 响应 |
+| `INVALID_JSON` | 响应不是有效的 JSON 或不是对象 |
 
 ---
 
-## Development
+## 功能
+
+- `apply` — 可以执行操作
+- `timeout` — 强制执行请求超时（通过 httpx）
+- `external` — 可以进行网络调用
+
+---
+
+## 开发
 
 ```bash
 pip install -e ".[dev]"
@@ -97,10 +97,10 @@ mypy src/ --ignore-missing-imports
 
 ---
 
-## License
+## 许可证
 
 MIT
 
 ---
 
-Built by [MCP Tool Shop](https://mcp-tool-shop.github.io/)
+由 [MCP Tool Shop](https://mcp-tool-shop.github.io/) 构建。

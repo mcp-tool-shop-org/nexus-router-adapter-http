@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
+  <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.md">English</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://mcp-tool-shop-org.github.io/nexus-router-adapter-http/"><img src="https://img.shields.io/badge/Landing_Page-live-blue" alt="Landing Page"></a>
 </p>
 
-**HTTP/REST dispatch adapter for [nexus-router](https://github.com/mcp-tool-shop-org/nexus-router)** — reference implementation of the adapter package contract.
+Adaptateur HTTP/REST pour [nexus-router](https://github.com/mcp-tool-shop-org/nexus-router) — implémentation de référence du contrat du paquet d'adaptateur.
 
 ---
 
@@ -25,7 +25,7 @@ pip install nexus-router-adapter-http
 
 ---
 
-## Usage
+## Utilisation
 
 ```python
 from nexus_router.plugins import load_adapter
@@ -43,17 +43,17 @@ result = adapter.call("my-tool", "my-method", {"arg": "value"})
 
 ## Configuration
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `base_url` | `str` | *required* | Base URL for the HTTP endpoint |
-| `adapter_id` | `str` | `http:{host}` | Stable identifier for this adapter |
-| `timeout_s` | `float` | `30.0` | Request timeout in seconds |
-| `headers` | `dict` | `{}` | Additional headers to include |
-| `capabilities` | `frozenset` | `{apply, external, timeout}` | Override capabilities |
+| Paramètre | Type | Valeur par défaut | Description |
+| ----------- | ------ | --------- | ------------- |
+| `base_url` | `str` | *obligatoire* | URL de base du point de terminaison HTTP |
+| `adapter_id` | `str` | `http:{host}` | Identifiant stable pour cet adaptateur |
+| `timeout_s` | `float` | `30.0` | Délai d'attente de la requête en secondes |
+| `headers` | `dict` | `{}` | En-têtes supplémentaires à inclure |
+| `capabilities` | `frozenset` | `{apply, external, timeout}` | Surcharge des capacités |
 
 ---
 
-## HTTP Protocol
+## Protocole HTTP
 
 ```
 POST {base_url}/{tool}/{method}
@@ -63,30 +63,30 @@ Accept: application/json
 {args}
 ```
 
-Expected response: status 2xx with JSON object body.
+Réponse attendue : code 2xx avec un corps JSON.
 
 ---
 
-## Error Codes
+## Codes d'erreur
 
-| Code | Meaning |
-|------|---------|
-| `TIMEOUT` | Request timed out |
-| `CONNECTION_FAILED` | Could not connect to server |
-| `HTTP_ERROR` | HTTP 4xx/5xx response |
-| `INVALID_JSON` | Response was not valid JSON or not an object |
-
----
-
-## Capabilities
-
-- `apply` — Can execute operations
-- `timeout` — Enforces request timeouts (via httpx)
-- `external` — Makes network calls
+| Code | Signification |
+| ------ | --------- |
+| `TIMEOUT` | Délai de la requête dépassé |
+| `CONNECTION_FAILED` | Impossible de se connecter au serveur |
+| `HTTP_ERROR` | Réponse HTTP 4xx/5xx |
+| `INVALID_JSON` | La réponse n'est pas un JSON valide ou n'est pas un objet |
 
 ---
 
-## Development
+## Capacités
+
+- `apply` — Peut exécuter des opérations
+- `timeout` — Applique les délais d'attente des requêtes (via httpx)
+- `external` — Effectue des appels réseau
+
+---
+
+## Développement
 
 ```bash
 pip install -e ".[dev]"
@@ -97,10 +97,10 @@ mypy src/ --ignore-missing-imports
 
 ---
 
-## License
+## Licence
 
 MIT
 
 ---
 
-Built by [MCP Tool Shop](https://mcp-tool-shop.github.io/)
+Créé par [MCP Tool Shop](https://mcp-tool-shop.github.io/)

@@ -9,3 +9,6 @@ build/
 .ruff_cache/
 *.egg
 .venv/
+site/.astro/
+site/node_modules/
+site/dist/
