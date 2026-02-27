@@ -1,6 +1,6 @@
 [project]
 name = "nexus-router-adapter-http"
-version = "0.2.1"
+version = "1.0.0"
 description = "HTTP adapter for nexus-router - reference implementation"
 readme = "README.md"
 license = "MIT"
@@ -10,7 +10,7 @@ authors = [
 ]
 keywords = ["nexus-router", "adapter", "http", "mcp"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
