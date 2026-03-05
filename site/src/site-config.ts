@@ -14,7 +14,7 @@ export const config: SiteConfig = {
     headlineAccent: 'HTTP dispatch for nexus-router.',
     description: 'Reference implementation of the nexus-router adapter contract. Route tool calls over HTTP/REST with timeouts, custom headers, and structured error handling.',
     primaryCta: { href: '#quick-start', label: 'Get started' },
-    secondaryCta: { href: '#features', label: 'Learn more' },
+    secondaryCta: { href: 'handbook/', label: 'Read the Handbook' },
     previews: [
       { label: 'Install', code: 'pip install nexus-router-adapter-http' },
       { label: 'Load', code: 'adapter = load_adapter("nexus_router_adapter_http:create_adapter", base_url="https://api.example.com/tools")' },
